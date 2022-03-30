@@ -7,6 +7,7 @@ import com.co.sofka.Ferreteria.services.cliente.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -31,6 +32,18 @@ public class ClienteController
                 .flatMap(cliente1 -> {
                      return  Mono.just(cliente1);
                 });
+    }
+
+    @DeleteMapping ("/cliente/{id}")
+    private Mono<Cliente>delete(@PathVariable("id") String id)
+    {
+        return clienteServices.eliminarCliente(id).flatMap(cliente -> Mono.just(cliente));
+    }
+
+    @GetMapping ("/cliente")
+    private Flux<Cliente> encontrarTodos()
+    {
+        return  clienteServices.encontrarATodos();
     }
 
 

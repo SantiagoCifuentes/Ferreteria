@@ -5,6 +5,7 @@ import com.co.sofka.Ferreteria.models.Cliente;
 import com.co.sofka.Ferreteria.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -28,5 +29,18 @@ public class ClienteServices
                     return agregarCliente(cliente);
                 }).switchIfEmpty(Mono.empty());
     }
+
+    public Mono<Cliente> eliminarCliente(String id){
+        return  clienteRepository .findById(id)
+                .flatMap(cliente -> clienteRepository.deleteById(cliente.getId()).thenReturn(cliente));
+    }
+
+
+    public Flux<Cliente> encontrarATodos()
+    {
+        return  clienteRepository.findAll();
+    }
+
+
 
 }
