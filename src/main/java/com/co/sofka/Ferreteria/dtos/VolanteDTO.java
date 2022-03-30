@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class VolanteDTO
 {
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private List<ProductosDTO> productosList;
     private LocalDate Fecha;
     private String identificacionProveedor;
