@@ -12,7 +12,36 @@ public class Productos
     @Id
     private String id = UUID.randomUUID().toString();
     private String nombre;
+    private Integer cantidad;
+    private Integer cantidadMin=5;
+    private Integer cantidadMax=30;
     private Integer precio;
+
+
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Integer getCantidadMin() {
+        return cantidadMin;
+    }
+
+    public void setCantidadMin(Integer cantidadMin) {
+        this.cantidadMin = cantidadMin;
+    }
+
+    public Integer getCantidadMax() {
+        return cantidadMax;
+    }
+
+    public void setCantidadMax(Integer cantidadMax) {
+        this.cantidadMax = cantidadMax;
+    }
 
     public String getId() {
         return id;
@@ -39,12 +68,14 @@ public class Productos
     }
 
 
-    public Productos(String id, String nombre, Integer precio) {
+    public Productos(String id, String nombre, Integer cantidad, Integer cantidadMin, Integer cantidadMax, Integer precio) {
         this.id = id;
         this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.cantidadMin = cantidadMin;
+        this.cantidadMax = cantidadMax;
         this.precio = precio;
     }
-
 
     public Productos() {
     }
