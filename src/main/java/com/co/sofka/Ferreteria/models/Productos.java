@@ -16,8 +16,15 @@ public class Productos
     private Integer cantidadMin=5;
     private Integer cantidadMax=30;
     private Integer precio;
+    private String alerta;
 
+    public String getAlerta() {
+        return alerta;
+    }
 
+    public void setAlerta(String alerta) {
+        this.alerta = alerta;
+    }
 
     public Integer getCantidad() {
         return cantidad;
@@ -68,13 +75,14 @@ public class Productos
     }
 
 
-    public Productos(String id, String nombre, Integer cantidad, Integer cantidadMin, Integer cantidadMax, Integer precio) {
+    public Productos(String id, String nombre, Integer cantidad, Integer cantidadMin, Integer cantidadMax, Integer precio, String alerta) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.cantidadMin = cantidadMin;
         this.cantidadMax = cantidadMax;
         this.precio = precio;
+        this.alerta = alerta;
     }
 
     public Productos() {

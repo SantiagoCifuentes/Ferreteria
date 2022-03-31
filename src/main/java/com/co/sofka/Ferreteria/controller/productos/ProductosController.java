@@ -32,6 +32,21 @@ public class ProductosController
                 });
     }
 
+    @PutMapping("/cantidad/productos/{id}/{cantidad}")
+    private Mono<Productos> updateByProductos(@PathVariable("id") String id, @PathVariable("cantidad") Integer cantidad)
+    {
+        return productosServices.actualizarProductosporCantidad(id, cantidad)
+                .flatMap(productos -> {return Mono.just(productos);});
+    }
+
+    @PutMapping("/venta/productos/{id}/{cantidad}")
+    private Mono<Productos> updateByProductosVendidos(@PathVariable("id") String id, @PathVariable("cantidad") Integer cantidad)
+    {
+        return productosServices.actualizarProductosVendidos(id, cantidad)
+                .flatMap(productos -> {return Mono.just(productos);});
+    }
+
+
     @DeleteMapping ("/productos/{id}")
     private Mono<Productos>delete(@PathVariable("id") String id)
     {

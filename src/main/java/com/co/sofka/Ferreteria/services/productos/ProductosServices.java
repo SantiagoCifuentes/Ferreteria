@@ -31,15 +31,58 @@ public class ProductosServices
                 }).switchIfEmpty(Mono.empty());
     }
 
-//    public Mono<Productos> actualizarProductosporCantidad(String id, Integer cantidad)
-//    {
-//        return  productosRepository.findById(id)
-//                .flatMap(productos1 -> {
-//                    if(productos1.getCantidad() < productos1.getCantidadMax()
-//                    productos1.setCantidad(cantidad);
-//                    return agregarProducto(productos);
-//                }).switchIfEmpty(Mono.empty());
-//    }
+    public Mono<Productos> actualizarProductosporCantidad(String id, Integer cantidad)
+    {
+        String alerta= "Te estás quedando sin productos";
+        return  productosRepository.findById(id)
+                .flatMap(productos1 -> {
+                    if((productos1.getCantidad() +cantidad) <= productos1.getCantidadMin())
+                    {
+                        productos1.setAlerta("Te estás quedando sin productos");
+
+                    }
+                    if ((productos1.getCantidad() +cantidad) >= productos1.getCantidadMax()){
+                        productos1.setAlerta("Estás recibiendo más mercancia de la permitida");
+                    }
+                    if ((productos1.getCantidad() +cantidad) < productos1.getCantidadMax() && (productos1.getCantidad() +cantidad) > productos1.getCantidadMin())
+                    {
+                        productos1.setAlerta("Cantidad normal de productos");
+                    }
+
+                    //productos1.setAlerta("Cantidad normal de productos");
+                    productos1.setCantidad(cantidad+ productos1.getCantidad());
+                    return (agregarProducto(productos1));
+                    //return Mono.just(productos1);
+                }).switchIfEmpty(Mono.empty());
+    }
+
+    public Mono<Productos> actualizarProductosVendidos(String id, Integer cantidad)
+    {
+
+        return  productosRepository.findById(id)
+                .flatMap(productos1 -> {
+                    if((productos1.getCantidad() -cantidad) <= productos1.getCantidadMin())
+                    {
+                        productos1.setAlerta("Te estás quedando sin productos");
+
+                    }
+                    if ((productos1.getCantidad() -cantidad) >= productos1.getCantidadMax()){
+                        productos1.setAlerta("Estás recibiendo más mercancia de la permitida");
+                    }
+                    if ((productos1.getCantidad() -cantidad) < productos1.getCantidadMax() && (productos1.getCantidad() -cantidad) > productos1.getCantidadMin())
+                    {
+                        productos1.setAlerta("Cantidad normal de productos");
+                    }
+
+
+                    productos1.setCantidad(productos1.getCantidad()-cantidad );
+                    return (agregarProducto(productos1));
+                    //return Mono.just(productos1);
+                }).switchIfEmpty(Mono.empty());
+    }
+
+
+
 
 
 
