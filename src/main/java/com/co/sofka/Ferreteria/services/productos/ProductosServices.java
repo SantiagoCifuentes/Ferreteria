@@ -22,18 +22,11 @@ public class ProductosServices
     }
 
 
-    public Mono<Productos> actualizarProductos(String id, Productos productos)
-    {
-        return  productosRepository.findById(id)
-                .flatMap(productos1 -> {
-                    productos1.setId(id);
-                    return agregarProducto(productos);
-                }).switchIfEmpty(Mono.empty());
-    }
+
 
     public Mono<Productos> actualizarProductosporCantidad(String id, Integer cantidad)
     {
-        String alerta= "Te estás quedando sin productos";
+
         return  productosRepository.findById(id)
                 .flatMap(productos1 -> {
                     if((productos1.getCantidad() +cantidad) <= productos1.getCantidadMin())
@@ -49,10 +42,10 @@ public class ProductosServices
                         productos1.setAlerta("Cantidad normal de productos");
                     }
 
-                    //productos1.setAlerta("Cantidad normal de productos");
+                    System.out.println("hablalo");
                     productos1.setCantidad(cantidad+ productos1.getCantidad());
                     return (agregarProducto(productos1));
-                    //return Mono.just(productos1);
+
                 }).switchIfEmpty(Mono.empty());
     }
 

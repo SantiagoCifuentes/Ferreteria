@@ -23,14 +23,7 @@ public class ProductosController
         return  productosServices.agregarProducto(productos);
     }
 
-    @PutMapping("/productos/{id}")
-    private Mono<Productos> update(@PathVariable("id") String id, @RequestBody Productos productos)
-    {
-        return  productosServices.actualizarProductos(id,productos)
-                .flatMap(productos1 -> {
-                    return  Mono.just(productos1);
-                });
-    }
+
 
     @PutMapping("/cantidad/productos/{id}/{cantidad}")
     private Mono<Productos> updateByProductos(@PathVariable("id") String id, @PathVariable("cantidad") Integer cantidad)

@@ -16,7 +16,7 @@ public class Volante
     private String id = UUID.randomUUID().toString();
     private List<Productos> productosList;
     private LocalDate Fecha;
-    private String identificacionProveedor;
+    private Proveedor proveedor;
 
 
     public String getId() {
@@ -43,34 +43,27 @@ public class Volante
         Fecha = fecha;
     }
 
-    public String getIdentificacionProveedor() {
-        return identificacionProveedor;
+    public Proveedor getProveedor() {
+        return proveedor;
     }
 
-    public void setIdentificacionProveedor(String identificacionProveedor) {
-        this.identificacionProveedor = identificacionProveedor;
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Volante)) return false;
-
-        Volante volante = (Volante) o;
-
-        if (id != null ? !id.equals(volante.id) : volante.id != null) return false;
-        if (productosList != null ? !productosList.equals(volante.productosList) : volante.productosList != null)
-            return false;
-        if (Fecha != null ? !Fecha.equals(volante.Fecha) : volante.Fecha != null) return false;
-        return identificacionProveedor != null ? identificacionProveedor.equals(volante.identificacionProveedor) : volante.identificacionProveedor == null;
+    public Volante(List<Productos> productosList, LocalDate fecha, Proveedor proveedor) {
+        this.productosList = productosList;
+        Fecha = fecha;
+        this.proveedor = proveedor;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (productosList != null ? productosList.hashCode() : 0);
-        result = 31 * result + (Fecha != null ? Fecha.hashCode() : 0);
-        result = 31 * result + (identificacionProveedor != null ? identificacionProveedor.hashCode() : 0);
-        return result;
+    public Volante(String id, List<Productos> productosList, LocalDate fecha, Proveedor proveedor) {
+        this.id = id;
+        this.productosList = productosList;
+        Fecha = fecha;
+        this.proveedor = proveedor;
+    }
+
+    public Volante() {
     }
 }
