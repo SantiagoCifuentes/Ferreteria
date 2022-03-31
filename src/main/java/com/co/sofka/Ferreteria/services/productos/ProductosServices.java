@@ -42,7 +42,7 @@ public class ProductosServices
                         productos1.setAlerta("Cantidad normal de productos");
                     }
 
-                    System.out.println("hablalo");
+
                     productos1.setCantidad(cantidad+ productos1.getCantidad());
                     return (agregarProducto(productos1));
 
