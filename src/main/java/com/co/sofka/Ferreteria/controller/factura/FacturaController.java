@@ -7,6 +7,7 @@ import com.co.sofka.Ferreteria.models.Volante;
 import com.co.sofka.Ferreteria.services.factura.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -28,5 +29,11 @@ public class FacturaController
 
 
         //return "hola";
+    }
+
+    @GetMapping ("/factura")
+    private Flux<Factura> encontrarTodos()
+    {
+        return  facturaService.encontrarATodos();
     }
 }

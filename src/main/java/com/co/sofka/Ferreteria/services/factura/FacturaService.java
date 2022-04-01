@@ -1,10 +1,7 @@
 package com.co.sofka.Ferreteria.services.factura;
 
 
-import com.co.sofka.Ferreteria.models.Asesor;
-import com.co.sofka.Ferreteria.models.Cliente;
-import com.co.sofka.Ferreteria.models.Factura;
-import com.co.sofka.Ferreteria.models.Productos;
+import com.co.sofka.Ferreteria.models.*;
 import com.co.sofka.Ferreteria.repositories.AsesorRepository;
 import com.co.sofka.Ferreteria.repositories.ClienteRepository;
 import com.co.sofka.Ferreteria.repositories.FacturaRepository;
@@ -12,6 +9,7 @@ import com.co.sofka.Ferreteria.repositories.ProductosRepository;
 import com.co.sofka.Ferreteria.services.productos.ProductosServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
@@ -45,5 +43,11 @@ public class FacturaService
         Factura factura = new Factura( LocalDate.now(),cliente1,asesor1,productosList);
         return  facturaRepository.save(factura);
     }
+
+    public Flux<Factura> encontrarATodos()
+    {
+        return  facturaRepository.findAll();
+    }
+
 
 }
