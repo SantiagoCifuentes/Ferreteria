@@ -15,6 +15,10 @@ public class Asesor
     private String nombre;
     private String contacto;
 
+    public Asesor() {
+
+    }
+
 
     public String getId() {
         return id;
