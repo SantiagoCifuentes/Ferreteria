@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 
 @RequestMapping("/ferreteria")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ClienteController
 {

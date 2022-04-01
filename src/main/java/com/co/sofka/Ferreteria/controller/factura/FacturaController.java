@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RequestMapping("/ferreteria")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class FacturaController
 {
