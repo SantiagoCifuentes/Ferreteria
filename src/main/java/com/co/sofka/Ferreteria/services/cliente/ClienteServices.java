@@ -1,6 +1,6 @@
 package com.co.sofka.Ferreteria.services.cliente;
 
-import com.co.sofka.Ferreteria.dtos.ClienteDTO;
+
 import com.co.sofka.Ferreteria.models.Cliente;
 import com.co.sofka.Ferreteria.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;

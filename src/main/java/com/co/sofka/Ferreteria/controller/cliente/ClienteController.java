@@ -1,7 +1,7 @@
 package com.co.sofka.Ferreteria.controller.cliente;
 
 
-import com.co.sofka.Ferreteria.dtos.ClienteDTO;
+
 import com.co.sofka.Ferreteria.models.Cliente;
 import com.co.sofka.Ferreteria.services.cliente.ClienteServices;
 import org.springframework.beans.factory.annotation.Autowired;
