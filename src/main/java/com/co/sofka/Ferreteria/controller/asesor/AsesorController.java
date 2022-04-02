@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+
+
+@RestController
 @RequestMapping("/ferreteria")
 @CrossOrigin(origins = "http://localhost:3000")
-@RestController
 public class AsesorController
 {
 
